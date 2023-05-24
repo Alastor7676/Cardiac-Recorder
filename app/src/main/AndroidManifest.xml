@@ -13,11 +13,16 @@
         android:theme="@style/Theme.CardiacRecorder"
         tools:targetApi="31">
         <activity
-<<<<<<< HEAD
             android:name=".signup_login"
-=======
+            android:exported="false" />
+        <activity
+            android:name=".AddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".dummy"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
->>>>>>> 366bced475f069411fb4087ee0a9481edf29b470
             android:exported="false" />
         <activity
             android:name=".MainActivity"
