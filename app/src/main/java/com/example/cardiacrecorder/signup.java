@@ -12,10 +12,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class signup extends AppCompatActivity {
 
-    DatabaseReference databaserefence=FirebaseDatabase.getInstance().getReferenceFromUrl("https://cardiacrecorder-db6d2-default-rtdb.firebaseio.com");
-
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://cardiacrecorder-db6d2-default-rtdb.firebaseio.com");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +53,10 @@ public class signup extends AppCompatActivity {
                 }
                 else
                 {
-                    databasereference.child("users").addListener.ForSingleValueEvent(new ValueEventListener(){
+                    databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener(){
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot){
-                            if(snapshot.haschild(usernametxt)){
+                            if(snapshot.hasChild(usernametxt)){
                                 Toast.makeText(signup.this,"Username is already registered",Toast.LENGTH_SHORT).show();
                             }
                             else{
@@ -60,6 +65,8 @@ public class signup extends AppCompatActivity {
                                 databaseReference.child("users").child(usernametxt).child("email").setValue(emailtxt);
 
                                 Toast.makeText(signup.this,"Register successful",Toast.LENGTH_SHORT).show();
+                                Intent intent =  new Intent(signup.this,LoginActivity.class);
+                                startActivity(intent);
                             }
                         }
                         @Override
