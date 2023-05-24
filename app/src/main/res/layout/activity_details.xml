@@ -40,7 +40,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/deteText"
+                android:id="@+id/dateText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
@@ -50,7 +50,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/detevalueText"
+                android:id="@+id/datevalueText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
