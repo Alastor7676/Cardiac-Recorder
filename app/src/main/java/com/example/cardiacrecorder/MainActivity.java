@@ -1,7 +1,9 @@
 package com.example.cardiacrecorder;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -11,6 +13,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,39 +26,73 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     MyAdapter adapter;
-    List<DataClass> dataList;
-    DataClass androidData;
+    ArrayList<DataClass> list;
     ImageView imgButton;
+    DatabaseReference databaseReference;
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(MainActivity.this,LoginActivity.class));
+        finish();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent i = getIntent();
+        String passeduser = i.getStringExtra("key");
+
         recyclerView = findViewById(R.id.recycler);
         imgButton = (ImageView) findViewById(R.id.imgadd);
+        databaseReference = FirebaseDatabase.getInstance().getReference("data");
+        list = new ArrayList<>();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new MyAdapter(this,list);
+        recyclerView.setAdapter(adapter);
 
+        databaseReference.child(passeduser).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    DataClass dataClass = dataSnapshot.getValue(DataClass.class);
+                    list.add(dataClass);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MainActivity.this, "Some Error", Toast.LENGTH_SHORT).show();
+            }
+        });
         imgButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent =  new Intent(MainActivity.this,AddActivity.class);
+                intent.putExtra("key", passeduser);
                 startActivity(intent);
+                finish();
             }
         });
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(MainActivity.this, 1);
-        recyclerView.setLayoutManager(gridLayoutManager);
-        dataList = new ArrayList<>();
+//        GridLayoutManager gridLayoutManager = new GridLayoutManager(MainActivity.this, 1);
+//        recyclerView.setLayoutManager(gridLayoutManager);
+//        dataList = new ArrayList<>();
+//
+//        androidData = new DataClass("120", "80", "45", "i don,t know");
+//        dataList.add(androidData);
+//        androidData = new DataClass("121", "80", "45", "i do not know");
+//        dataList.add(androidData);
+//        androidData = new DataClass("122", "80", "45", "i don't know");
+//        dataList.add(androidData);
+//        androidData = new DataClass("122", "80", "45", "i don't know");
+//        dataList.add(androidData);
 
-        androidData = new DataClass("120", "80", "45", "i don,t know");
-        dataList.add(androidData);
-        androidData = new DataClass("121", "80", "45", "i do not know");
-        dataList.add(androidData);
-        androidData = new DataClass("122", "80", "45", "i don't know");
-        dataList.add(androidData);
-        androidData = new DataClass("122", "80", "45", "i don't know");
-        dataList.add(androidData);
-
-        adapter = new MyAdapter(MainActivity.this, dataList);
-        recyclerView.setAdapter(adapter);
+//        adapter = new MyAdapter(MainActivity.this, dataList);
+//        recyclerView.setAdapter(adapter);
     }
 }

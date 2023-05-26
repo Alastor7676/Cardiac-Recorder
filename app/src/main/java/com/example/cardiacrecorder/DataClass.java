@@ -1,32 +1,50 @@
 package com.example.cardiacrecorder;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
+@IgnoreExtraProperties
 public class DataClass {
+    public DataClass() {
 
-    private String datasys;
-    private String dataDis;
-    private String databpm;
-    private String datacom;
-
-    public String getDatasys() {
-        return datasys;
     }
 
-    public String getDataDis() {
-        return dataDis;
+    private String date;
+    private String time;
+    private String sys;
+    private String dis;
+    private String bpm;
+    private String cmnt;
+
+    public String getDate() {
+        return date;
     }
 
-    public String getDatabpm() {
-        return databpm;
+    public String getTime() {
+        return time;
     }
 
-    public String getDatacom() {
-        return datacom;
+    public String getSys() {
+        return sys;
     }
 
-    public DataClass(String data1, String data2, String data3, String data4) {
-        this.datasys = data1;
-        this.dataDis = data2;
-        this.databpm = data3;
-        this.datacom = data4;
+    public String getDis() {
+        return dis;
+    }
+
+    public String getBpm() {
+        return bpm;
+    }
+
+    public String getCmnt() {
+        return cmnt;
+    }
+
+    public DataClass(String date, String time, String sys, String dis, String bpm, String cmnt) {
+        this.date = date;
+        this.time = time;
+        this.sys = sys;
+        this.dis = dis;
+        this.bpm = bpm;
+        this.cmnt = cmnt;
     }
 }

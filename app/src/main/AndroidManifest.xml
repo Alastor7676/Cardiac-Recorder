@@ -18,9 +18,6 @@
             android:name=".AddActivity"
             android:exported="false" />
         <activity
-            android:name=".dummy"
-            android:exported="false" />
-        <activity
             android:name=".edit"
             android:exported="false" />
         <activity

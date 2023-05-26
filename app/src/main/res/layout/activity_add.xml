@@ -8,7 +8,7 @@
     tools:context=".AddActivity">
 
     <EditText
-        android:id="@+id/editTextText7"
+        android:id="@+id/cmnttext"
         android:layout_width="332dp"
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
@@ -17,10 +17,10 @@
         android:hint="Comment(if any)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText5" />
+        app:layout_constraintTop_toBottomOf="@+id/bpmtext" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/systext"
         android:layout_width="332dp"
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
@@ -29,10 +29,10 @@
         android:hint="Systolic Pressure"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
+        app:layout_constraintTop_toBottomOf="@+id/timetext" />
 
     <EditText
-        android:id="@+id/editTextText5"
+        android:id="@+id/bpmtext"
         android:layout_width="332dp"
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
@@ -41,10 +41,10 @@
         android:hint="Heart Rate(bpm)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/distext" />
 
     <EditText
-        android:id="@+id/editTextText4"
+        android:id="@+id/timetext"
         android:layout_width="332dp"
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
@@ -53,10 +53,10 @@
         android:hint="Time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
+        app:layout_constraintTop_toBottomOf="@+id/datetext" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/datetext"
         android:layout_width="332dp"
         android:layout_height="43dp"
         android:layout_marginTop="36dp"
@@ -82,7 +82,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/distext"
         android:layout_width="332dp"
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
@@ -91,10 +91,10 @@
         android:hint="Diastolic Pressure"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@+id/systext" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/addbutton"
         android:layout_width="100dp"
         android:layout_height="55dp"
         android:layout_marginTop="60dp"
@@ -102,6 +102,6 @@
         android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText7" />
+        app:layout_constraintTop_toBottomOf="@+id/cmnttext" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,48 +5,60 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
+import java.util.ArrayList;
+import java.util.List;
 
-    private Context context;
-    private List<DataClass> dataList;
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-    public void setSearchList(List<DataClass> dataSearchList){
-        this.dataList = dataSearchList;
-        notifyDataSetChanged();
-    }
+    Context context;
+    ArrayList<DataClass>list;
 
-    public MyAdapter(Context context, List<DataClass> dataList){
+    public MyAdapter(Context context, ArrayList<DataClass> list) {
         this.context = context;
-        this.dataList = dataList;
+        this.list = list;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false);
-        return new MyViewHolder(view);
+        View v = LayoutInflater.from(context).inflate(R.layout.item_layout,parent,false);
+        return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        DataClass dataClass = list.get(position);
+        holder.sys.setText(dataClass.getSys());
+        holder.dis.setText(dataClass.getDis());
+        holder.bpm.setText(dataClass.getBpm());
+        holder.cmnt.setText(dataClass.getCmnt());
 
-        holder.dist.setText(dataList.get(position).getDataDis());
-        holder.syst.setText(dataList.get(position).getDatasys());
-        holder.cmnt.setText(dataList.get(position).getDatacom());
-        holder.bpm.setText(dataList.get(position).getDatabpm());
+        holder.editimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, edit.class);
+                context.startActivity(intent);
+            }
+        });
 
+        holder.delimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Delete from list
+            }
+        });
         holder.recCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, dummy.class);
+                Intent intent = new Intent(context, details.class);
+//                intent.putExtra("key", ussr);
 //                intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getDataImage());
 //                intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getDataTitle());
 //                intent.putExtra("Desc", dataList.get(holder.getAdapterPosition()).getDataDesc());
@@ -54,27 +66,29 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
                 context.startActivity(intent);
             }
         });
-
     }
+
+
 
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return list.size();
     }
-}
 
-class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
+        TextView sys,dis,bpm,cmnt;
+        ImageView editimg,delimg;
+        CardView recCard;
 
-    TextView syst, dist, bpm, cmnt;
-    CardView recCard;
-
-    public MyViewHolder(@NonNull View itemView) {
-        super(itemView);
-
-        cmnt = itemView.findViewById(R.id.textView10);
-        syst = itemView.findViewById(R.id.un1);
-        dist = itemView.findViewById(R.id.un2);
-        bpm = itemView.findViewById(R.id.un3);
-        recCard = itemView.findViewById(R.id.recCard);
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            sys = itemView.findViewById(R.id.un1);
+            dis = itemView.findViewById(R.id.un2);
+            bpm = itemView.findViewById(R.id.un3);
+            cmnt = itemView.findViewById(R.id.textView10);
+            editimg = itemView.findViewById(R.id.image2);
+            delimg = itemView.findViewById(R.id.image);
+            recCard = itemView.findViewById(R.id.recCard);
+        }
     }
 }

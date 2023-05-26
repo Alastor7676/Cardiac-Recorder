@@ -55,7 +55,9 @@ public class LoginActivity extends AppCompatActivity {
                                 String getpass = snapshot.child(user).child("pass").getValue(String.class);
                                 if(getpass.equals(pass)){
                                     Toast.makeText(LoginActivity.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                                    intent.putExtra("key", user);
+                                    startActivity(intent);
                                     finish();
                                 }
                                 else{

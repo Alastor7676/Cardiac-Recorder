@@ -11,9 +11,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class edit extends AppCompatActivity {
 
-    DatabaseReference databaserefence=FirebaseDatabase.getInstance().getReferenceFromUrl("https://cardiacrecorder-db6d2-default-rtdb.firebaseio.com");
+    DatabaseReference databaserefence= FirebaseDatabase.getInstance().getReferenceFromUrl("https://cardiacrecorder-db6d2-default-rtdb.firebaseio.com");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +38,7 @@ public class edit extends AppCompatActivity {
         String user=intent.getStringExtra("username");
         String id=intent.getStringExtra("id");
 
-        databaseReference.child("data").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaserefence.child("data").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String datevalue = snapshot.child(user).child(id).child("date").getValue(String.class);
@@ -68,15 +74,15 @@ public class edit extends AppCompatActivity {
                 String bpmvalue = heart.getText().toString();
                 String cmntvalue = comment.getText().toString();
 
-                databasereference.child("data").addListener.ForSingleValueEvent(new ValueEventListener(){
+                databaserefence.child("data").addListenerForSingleValueEvent(new ValueEventListener(){
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot){
-                            databaseReference.child("data").child(user).child(id).child("date").setValue(datevalue);
-                            databaseReference.child("data").child(user).child(id).child("time").setValue(timevalue);
-                            databaseReference.child("data").child(user).child(id).child("sys").setValue(sysvalue);
-                            databaseReference.child("data").child(user).child(id).child("dis").setValue(disvalue);
-                            databaseReference.child("data").child(user).child(id).child("bpm").setValue(bpmvalue);
-                            databaseReference.child("data").child(user).child(id).child("cmnt").setValue(cmntvalue);
+                            databaserefence.child("data").child(user).child(id).child("date").setValue(datevalue);
+                            databaserefence.child("data").child(user).child(id).child("time").setValue(timevalue);
+                            databaserefence.child("data").child(user).child(id).child("sys").setValue(sysvalue);
+                            databaserefence.child("data").child(user).child(id).child("dis").setValue(disvalue);
+                            databaserefence.child("data").child(user).child(id).child("bpm").setValue(bpmvalue);
+                            databaserefence.child("data").child(user).child(id).child("cmnt").setValue(cmntvalue);
                             Toast.makeText(edit.this,"Data Update Successful",Toast.LENGTH_SHORT).show();
                             Intent intent =  new Intent(edit.this, MainActivity.class);
                             intent.putExtra("username",user);
