@@ -7,7 +7,7 @@ public class DataClass {
     public DataClass() {
 
     }
-
+    private String passeduser,id;
     private String date;
     private String time;
     private String sys;
@@ -15,6 +15,12 @@ public class DataClass {
     private String bpm;
     private String cmnt;
 
+    public String getPasseduser() {
+        return passeduser;
+    }
+    public String getId() {
+        return id;
+    }
     public String getDate() {
         return date;
     }
@@ -39,12 +45,14 @@ public class DataClass {
         return cmnt;
     }
 
-    public DataClass(String date, String time, String sys, String dis, String bpm, String cmnt) {
+    public DataClass(String date, String time, String sys, String dis, String bpm, String cmnt, String passeduser, String id) {
         this.date = date;
         this.time = time;
         this.sys = sys;
         this.dis = dis;
         this.bpm = bpm;
         this.cmnt = cmnt;
+        this.passeduser = passeduser;
+        this.id = id;
     }
 }

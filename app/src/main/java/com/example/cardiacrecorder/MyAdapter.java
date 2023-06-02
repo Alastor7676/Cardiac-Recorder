@@ -1,5 +1,6 @@
 package com.example.cardiacrecorder;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -7,10 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +51,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, edit.class);
+
+                intent.putExtra("username", list.get(holder.getAdapterPosition()).getPasseduser());
+                intent.putExtra("id", list.get(holder.getAdapterPosition()).getId());
+
                 context.startActivity(intent);
             }
         });
@@ -52,16 +63,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             @Override
             public void onClick(View v) {
                 //Delete from list
+                String user = list.get(holder.getAdapterPosition()).getPasseduser();
+                String id = list.get(holder.getAdapterPosition()).getId();
+                final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("data");
+                DatabaseReference itemRef = reference.child(user).child(id);
+                itemRef.removeValue();
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.putExtra("key", user);
+                context.startActivity(intent);
+                ((Activity)context).finish();
             }
         });
         holder.recCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, details.class);
-//                intent.putExtra("key", ussr);
-//                intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getDataImage());
-//                intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getDataTitle());
-//                intent.putExtra("Desc", dataList.get(holder.getAdapterPosition()).getDataDesc());
+                intent.putExtra("username", list.get(holder.getAdapterPosition()).getPasseduser());
+                intent.putExtra("id", list.get(holder.getAdapterPosition()).getId());
 
                 context.startActivity(intent);
             }

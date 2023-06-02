@@ -54,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MyAdapter(this,list);
         recyclerView.setAdapter(adapter);
 
-        databaseReference.child(passeduser).addValueEventListener(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for(DataSnapshot dataSnapshot: snapshot.child(passeduser).getChildren()){
                     DataClass dataClass = dataSnapshot.getValue(DataClass.class);
                     list.add(dataClass);
                 }
@@ -79,20 +79,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        GridLayoutManager gridLayoutManager = new GridLayoutManager(MainActivity.this, 1);
-//        recyclerView.setLayoutManager(gridLayoutManager);
-//        dataList = new ArrayList<>();
-//
-//        androidData = new DataClass("120", "80", "45", "i don,t know");
-//        dataList.add(androidData);
-//        androidData = new DataClass("121", "80", "45", "i do not know");
-//        dataList.add(androidData);
-//        androidData = new DataClass("122", "80", "45", "i don't know");
-//        dataList.add(androidData);
-//        androidData = new DataClass("122", "80", "45", "i don't know");
-//        dataList.add(androidData);
-
-//        adapter = new MyAdapter(MainActivity.this, dataList);
-//        recyclerView.setAdapter(adapter);
     }
 }

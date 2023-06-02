@@ -65,7 +65,7 @@ public class AddActivity extends AppCompatActivity {
         String cmnt = e6.getText().toString();
         String id = databaseReference.push().getKey();
 
-        DataClass dataClass = new DataClass(date,time,sys,dis,bpm,cmnt);
+        DataClass dataClass = new DataClass(date,time,sys,dis,bpm,cmnt,passeduser,id);
         if(time.isEmpty() || date.isEmpty() || sys.isEmpty() || dis.isEmpty() || bpm.isEmpty())
         {
             Toast.makeText(AddActivity.this,"Please fill all required fields",Toast.LENGTH_SHORT).show();
