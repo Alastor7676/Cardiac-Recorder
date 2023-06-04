@@ -65,8 +65,7 @@ public class signup extends AppCompatActivity {
                                 databaseReference.child("users").child(usernametxt).child("email").setValue(emailtxt);
 
                                 Toast.makeText(signup.this,"Register successful",Toast.LENGTH_SHORT).show();
-                                Intent intent =  new Intent(signup.this,LoginActivity.class);
-                                startActivity(intent);
+
                             }
                         }
                         @Override
@@ -75,7 +74,13 @@ public class signup extends AppCompatActivity {
                         }
                     }
                     );
-
+                    Intent intent =  new Intent(signup.this,otp_verification.class);
+                    intent.putExtra("user", usernametxt);
+                    intent.putExtra("name", nametxt);
+                    intent.putExtra("pass", passtxt);
+                    intent.putExtra("phone", emailtxt);
+                    startActivity(intent);
+                    finish();
 
 
                 }
