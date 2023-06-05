@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
@@ -20,6 +22,7 @@ import java.util.Random;
 public class otp_verification extends AppCompatActivity {
 
     int d1;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://cardiacrecorder-db6d2-default-rtdb.firebaseio.com");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,53 +45,54 @@ public class otp_verification extends AppCompatActivity {
         Random random = new Random();
         int randomNumber = random.nextInt(max - min + 1) + min;
 
-        System.out.println("Random 4-digit number: " + randomNumber);
+        //System.out.println("Random 4-digit number: " + randomNumber);
 
         SmsManager smsManager = SmsManager.getDefault();
-        smsManager.sendTextMessage(phone, null, "Your OTP "+randomNumber, null, null);
+        smsManager.sendTextMessage(phone, null, "Your OTP is"+randomNumber, null, null);
 
-        String a=input1.getText().toString();
-        d1=Integer.parseInt(a);
 
-        String a2=input2.getText().toString();
-        int d2=Integer.parseInt(a2);
-
-        String a3=input3.getText().toString();
-        int d3=Integer.parseInt(a3);
-
-        String a4=input4.getText().toString();
-        int d4=Integer.parseInt(a4);
-        d1=d1*10+d2;
-        d1=d1*10+d3;
-        d1=d1*10+d4;
 
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(d1==randomNumber){
-                    databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener(){
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot){
-                            if(snapshot.hasChild(usernametxt)){
-                                Toast.makeText(otp_verification.this,"Username is already registered",Toast.LENGTH_SHORT).show();
-                            }
-                            else{
-                                databaseReference.child("users").child(usernametxt).child("name").setValue(nametxt);
-                                databaseReference.child("users").child(usernametxt).child("pass").setValue(passtxt);
-                                databaseReference.child("users").child(usernametxt).child("email").setValue(emailtxt);
+                String a=input1.getText().toString();
+                String a2=input2.getText().toString();
+                String a3=input3.getText().toString();
+                String a4=input4.getText().toString();
 
-                                Toast.makeText(otp_verification.this,"Register successful",Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error){
-
-                        }
-                    }
-                    );
+                if(a.isEmpty()||a2.isEmpty()||a3.isEmpty()||a4.isEmpty()){
+                    Toast.makeText(otp_verification.this,"Please fill all fields",Toast.LENGTH_SHORT).show();
                 }
-                else {
-                    Toast.makeText(otp_verification.this,"Wrong OTP",Toast.LENGTH_SHORT).show();
+                else{
+                    d1=Integer.parseInt(a);
+                    int d2=Integer.parseInt(a2);
+                    int d3=Integer.parseInt(a3);
+                    int d4=Integer.parseInt(a4);
+                    d1=d1*10+d2;
+                    d1=d1*10+d3;
+                    d1=d1*10+d4;
+
+                    if(d1==randomNumber){
+                        databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener(){
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot){
+                                databaseReference.child("users").child(user).child("name").setValue(name);
+                                databaseReference.child("users").child(user).child("pass").setValue(pass);
+                                databaseReference.child("users").child(user).child("email").setValue(phone);
+                                Toast.makeText(otp_verification.this,"Register successful",Toast.LENGTH_SHORT).show();
+                                Intent intent =  new Intent(otp_verification.this,LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error){
+                            }
+                        }
+                        );
+                    }
+                    else {
+                        Toast.makeText(otp_verification.this,"Wrong OTP",Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

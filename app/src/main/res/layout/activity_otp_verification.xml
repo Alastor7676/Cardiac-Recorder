@@ -10,9 +10,13 @@
         android:id="@+id/imageView3"
         android:layout_width="162dp"
         android:layout_height="135dp"
-        app:srcCompat="@drawable/otp"
-        tools:layout_editor_absoluteX="124dp"
-        tools:layout_editor_absoluteY="119dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.755"
+        app:srcCompat="@drawable/otp" />
 
     <TextView
         android:id="@+id/textView7"
