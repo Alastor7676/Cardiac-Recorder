@@ -65,9 +65,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 //Delete from list
                 String user = list.get(holder.getAdapterPosition()).getPasseduser();
                 String id = list.get(holder.getAdapterPosition()).getId();
-                final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("data");
-                DatabaseReference itemRef = reference.child(user).child(id);
-                itemRef.removeValue();
+                delete_data(user,id);
                 Intent intent = new Intent(context, MainActivity.class);
                 intent.putExtra("key", user);
                 context.startActivity(intent);
@@ -108,5 +106,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             delimg = itemView.findViewById(R.id.image);
             recCard = itemView.findViewById(R.id.recCard);
         }
+    }
+
+    public void delete_data(String user,String id){
+        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("data");
+        DatabaseReference itemRef = reference.child(user).child(id);
+        itemRef.removeValue();
     }
 }

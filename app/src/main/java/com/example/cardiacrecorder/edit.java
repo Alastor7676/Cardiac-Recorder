@@ -73,29 +73,35 @@ public class edit extends AppCompatActivity {
                 String disvalue = diastolic.getText().toString();
                 String bpmvalue = heart.getText().toString();
                 String cmntvalue = comment.getText().toString();
-
-                databaserefence.child("data").addListenerForSingleValueEvent(new ValueEventListener(){
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot){
-                            databaserefence.child("data").child(user).child(id).child("date").setValue(datevalue);
-                            databaserefence.child("data").child(user).child(id).child("time").setValue(timevalue);
-                            databaserefence.child("data").child(user).child(id).child("sys").setValue(sysvalue);
-                            databaserefence.child("data").child(user).child(id).child("dis").setValue(disvalue);
-                            databaserefence.child("data").child(user).child(id).child("bpm").setValue(bpmvalue);
-                            databaserefence.child("data").child(user).child(id).child("cmnt").setValue(cmntvalue);
-                            Toast.makeText(edit.this,"Data Update Successful",Toast.LENGTH_SHORT).show();
-                            Intent intent =  new Intent(edit.this, MainActivity.class);
-                            intent.putExtra("username",user);
-                            startActivity(intent);
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error){
-
-                    }
+                if(datevalue.isEmpty() || timevalue.isEmpty() || sysvalue.isEmpty() || disvalue.isEmpty() || bpmvalue.isEmpty() || cmntvalue.isEmpty()){
+                    Toast.makeText(edit.this,"Please fill all fields",Toast.LENGTH_SHORT).show();
                 }
-                );
-
+                else{
+                    edit_data(user,id,datevalue,timevalue,sysvalue,disvalue,bpmvalue,cmntvalue);
+                    Intent intent =  new Intent(edit.this, MainActivity.class);
+                    intent.putExtra("username",user);
+                    startActivity(intent);
+                }
             }
         });
+    }
+    public void edit_data(String user,String id,String datevalue,String timevalue,String sysvalue,String disvalue,String bpmvalue,String cmntvalue){
+        databaserefence.child("data").addListenerForSingleValueEvent(new ValueEventListener(){
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot){
+                databaserefence.child("data").child(user).child(id).child("date").setValue(datevalue);
+                databaserefence.child("data").child(user).child(id).child("time").setValue(timevalue);
+                databaserefence.child("data").child(user).child(id).child("sys").setValue(sysvalue);
+                databaserefence.child("data").child(user).child(id).child("dis").setValue(disvalue);
+                databaserefence.child("data").child(user).child(id).child("bpm").setValue(bpmvalue);
+                databaserefence.child("data").child(user).child(id).child("cmnt").setValue(cmntvalue);
+                Toast.makeText(edit.this,"Data Update Successful",Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error){
+
+            }
+        }
+        );
     }
 }

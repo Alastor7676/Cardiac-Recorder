@@ -22,6 +22,7 @@ import java.util.Random;
 public class otp_verification extends AppCompatActivity {
 
     int d1;
+    String user,name,pass,phone;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://cardiacrecorder-db6d2-default-rtdb.firebaseio.com");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +30,10 @@ public class otp_verification extends AppCompatActivity {
         setContentView(R.layout.activity_otp_verification);
 
         Intent intent=getIntent();
-        String user=intent.getStringExtra("user");
-        String name=intent.getStringExtra("name");
-        String pass=intent.getStringExtra("pass");
-        String phone=intent.getStringExtra("phone");
+        user=intent.getStringExtra("user");
+        name=intent.getStringExtra("name");
+        pass=intent.getStringExtra("pass");
+        phone=intent.getStringExtra("phone");
 
         EditText input1=findViewById(R.id.input1);
         EditText input2=findViewById(R.id.input2);
@@ -73,22 +74,10 @@ public class otp_verification extends AppCompatActivity {
                     d1=d1*10+d4;
 
                     if(d1==randomNumber){
-                        databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener(){
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot){
-                                databaseReference.child("users").child(user).child("name").setValue(name);
-                                databaseReference.child("users").child(user).child("pass").setValue(pass);
-                                databaseReference.child("users").child(user).child("email").setValue(phone);
-                                Toast.makeText(otp_verification.this,"Register successful",Toast.LENGTH_SHORT).show();
-                                Intent intent =  new Intent(otp_verification.this,LoginActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error){
-                            }
-                        }
-                        );
+                        add_user(user,name,pass,phone);
+                        Intent intent =  new Intent(otp_verification.this,LoginActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
                     else {
                         Toast.makeText(otp_verification.this,"Wrong OTP",Toast.LENGTH_SHORT).show();
@@ -96,5 +85,21 @@ public class otp_verification extends AppCompatActivity {
                 }
             }
         });
+    }
+    public void add_user(String user,String name,String pass,String phone){
+        databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener(){
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot){
+                databaseReference.child("users").child(user).child("name").setValue(name);
+                databaseReference.child("users").child(user).child("pass").setValue(pass);
+                databaseReference.child("users").child(user).child("email").setValue(phone);
+                Toast.makeText(otp_verification.this,"Register successful",Toast.LENGTH_SHORT).show();
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error){
+            }
+        }
+        );
     }
 }
