@@ -71,19 +71,23 @@ public class AddActivity extends AppCompatActivity {
             Toast.makeText(AddActivity.this,"Please fill all required fields",Toast.LENGTH_SHORT).show();
         }
         else{
-            databaseReference.child("data").child(passeduser).child(id).setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(AddActivity.this,"Data added",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(AddActivity.this,MainActivity.class);
-                        intent.putExtra("key", passeduser);
-                        startActivity(intent);
-                        finish();
-                    }
-                }
-            });
+            add_data(id,dataClass,passeduser);
+            Intent intent = new Intent(AddActivity.this,MainActivity.class);
+            intent.putExtra("key", passeduser);
+            startActivity(intent);
+            finish();
         }
 
+    }
+
+    public void add_data(String id,DataClass dataClass,String passeduser){
+        databaseReference.child("data").child(passeduser).child(id).setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(AddActivity.this,"Data added",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
