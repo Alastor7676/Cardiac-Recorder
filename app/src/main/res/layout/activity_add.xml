@@ -5,43 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#d2d5f7"
-    tools:context=".AddActivity">
+    tools:context=".AddActivity"
+    android:id = "@+id/add">
 
     <EditText
-        android:id="@+id/cmnttext"
+        android:id="@+id/datetext"
         android:layout_width="332dp"
         android:layout_height="43dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:inputType="text"
-        android:hint="Comment(if any)"
+        android:hint="Date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bpmtext" />
-
-    <EditText
-        android:id="@+id/systext"
-        android:layout_width="332dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="Systolic Pressure"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timetext" />
-
-    <EditText
-        android:id="@+id/bpmtext"
-        android:layout_width="332dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="Heart Rate(bpm)"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/distext" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
         android:id="@+id/timetext"
@@ -56,16 +33,52 @@
         app:layout_constraintTop_toBottomOf="@+id/datetext" />
 
     <EditText
-        android:id="@+id/datetext"
+        android:id="@+id/systext"
         android:layout_width="332dp"
         android:layout_height="43dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="text"
-        android:hint="Date"
+        android:hint="Systolic Pressure"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/timetext" />
+
+    <EditText
+        android:id="@+id/distext"
+        android:layout_width="332dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Diastolic Pressure"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/systext" />
+
+    <EditText
+        android:id="@+id/bpmtext"
+        android:layout_width="332dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Heart Rate(bpm)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/distext" />
+
+    <EditText
+        android:id="@+id/cmnttext"
+        android:layout_width="332dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Comment(if any)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bpmtext" />
 
     <TextView
         android:id="@+id/textView6"
@@ -80,18 +93,6 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/distext"
-        android:layout_width="332dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="Diastolic Pressure"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/systext" />
 
     <Button
         android:id="@+id/addbutton"

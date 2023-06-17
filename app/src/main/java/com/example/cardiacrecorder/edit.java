@@ -87,6 +87,7 @@ public class edit extends AppCompatActivity {
                             Intent intent =  new Intent(edit.this, MainActivity.class);
                             intent.putExtra("username",user);
                             startActivity(intent);
+                            finish();
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error){

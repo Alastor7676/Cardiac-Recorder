@@ -50,8 +50,6 @@ public class otp_verification extends AppCompatActivity {
         SmsManager smsManager = SmsManager.getDefault();
         smsManager.sendTextMessage(phone, null, "Your OTP is"+randomNumber, null, null);
 
-
-
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
