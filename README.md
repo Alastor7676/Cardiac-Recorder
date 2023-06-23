@@ -16,21 +16,19 @@ In an era where individuals are increasingly prioritizing their health and well-
 
 <table>
   <tr> 
-    <td>![splash screen](https://github.com/Alastor7676/Cardiac-Recorder/blob/main/Images/1.jpg)</td>
-    <td>![login-signup screen](Images/2.jpg)</td>
-    <td>![login screen](Images/3.jpg)</td>
+    <td><img src = "https://github.com/Alastor7676/Cardiac-Recorder/assets/52665240/98891d66-5eda-4e3c-97fc-c9d9de5361fe" height = "500px" width="250px"/></td>
+    <td><img src = "https://github.com/Alastor7676/Cardiac-Recorder/assets/52665240/8124d1f7-44a4-4485-88da-49bee24035c5" height = "500px" width="250px"/></td>
+    <td><img src = "https://github.com/Alastor7676/Cardiac-Recorder/assets/52665240/a2a126bf-27d8-47b7-bcbd-2f8ebfda8208" height = "500px" width="250px"/></td>
   </tr>
-  <tr>
-    <td>![signup screen](Images/4.jpg)</td>
-    <td>![otp screen](Images/5.jpg)</td>
-    <td>![data screen](Images/6.jpg)</td>
-
+  <tr> 
+    <td><img src = "https://github.com/Alastor7676/Cardiac-Recorder/assets/52665240/b543c11a-fd7e-49f6-ade6-5c659f541cec" height = "500px" width="250px"/></td>
+    <td><img src = "https://github.com/Alastor7676/Cardiac-Recorder/assets/52665240/190c7ada-f5eb-44a9-95e6-d3551d35a849" height = "500px" width="250px"/></td>
+    <td><img src = "https://github.com/Alastor7676/Cardiac-Recorder/assets/52665240/c62e9cba-18b1-44f3-816d-5714b7b822f2" height = "500px" width="250px"/></td>
   </tr>
-  <tr>
-    <td>![add screen](Images/7.jpg)</td>
-    <td>![details screen](Images/8.jpg)</td>
-    <td>![edit screen](Images/9.jpg)</td>
-
+  <tr> 
+    <td><img src = "https://github.com/Alastor7676/Cardiac-Recorder/assets/52665240/4cd7fbca-b15e-42cb-8571-f1cc7805376c" height = "500px" width="250px"/></td>
+    <td><img src = "https://github.com/Alastor7676/Cardiac-Recorder/assets/52665240/c1400906-9e58-4445-958c-4d00eea223d7" height = "500px" width="250px"/></td>
+    <td><img src = "https://github.com/Alastor7676/Cardiac-Recorder/assets/52665240/38d06512-efed-4c19-b307-b11e422d38a0" height = "500px" width="250px"/></td>
   </tr>
 
 </table>
