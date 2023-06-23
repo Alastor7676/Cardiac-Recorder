@@ -16,7 +16,7 @@ In an era where individuals are increasingly prioritizing their health and well-
 
 <table>
   <tr> 
-    <td>![splash screen](Images/1.jpg)</td>
+    <td>![splash screen](https://github.com/Alastor7676/Cardiac-Recorder/blob/main/Images/1.jpg)</td>
     <td>![login-signup screen](Images/2.jpg)</td>
     <td>![login screen](Images/3.jpg)</td>
   </tr>
