@@ -16,20 +16,20 @@ In an era where individuals are increasingly prioritizing their health and well-
 
 <table>
   <tr> 
-    <td>![splash screen](/Images/1.jpg)</td>
-    <td>![login-signup screen](/Images/2.jpg)</td>
-    <td>![login screen](/Images/3.jpg)</td>
+    <td>![splash screen](Images/1.jpg)</td>
+    <td>![login-signup screen](Images/2.jpg)</td>
+    <td>![login screen](Images/3.jpg)</td>
   </tr>
   <tr>
-    <td>![signup screen](/Images/4.jpg)</td>
-    <td>![otp screen](/Images/5.jpg)</td>
-    <td>![data screen](/Images/6.jpg)</td>
+    <td>![signup screen](Images/4.jpg)</td>
+    <td>![otp screen](Images/5.jpg)</td>
+    <td>![data screen](Images/6.jpg)</td>
 
   </tr>
   <tr>
-    <td>![add screen](/Images/7.jpg)</td>
-    <td>![details screen](/Images/8.jpg)</td>
-    <td>![edit screen](/Images/9.jpg)</td>
+    <td>![add screen](Images/7.jpg)</td>
+    <td>![details screen](Images/8.jpg)</td>
+    <td>![edit screen](Images/9.jpg)</td>
 
   </tr>
 
