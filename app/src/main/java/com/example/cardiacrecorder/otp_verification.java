@@ -49,7 +49,7 @@ public class otp_verification extends AppCompatActivity {
         //System.out.println("Random 4-digit number: " + randomNumber);
 
         SmsManager smsManager = SmsManager.getDefault();
-        smsManager.sendTextMessage(phone, null, "Your OTP is"+randomNumber, null, null);
+        smsManager.sendTextMessage(phone, null, "Your OTP is "+randomNumber, null, null);
 
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +92,6 @@ public class otp_verification extends AppCompatActivity {
                 databaseReference.child("users").child(user).child("pass").setValue(pass);
                 databaseReference.child("users").child(user).child("email").setValue(phone);
                 Toast.makeText(otp_verification.this,"Register successful",Toast.LENGTH_SHORT).show();
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error){

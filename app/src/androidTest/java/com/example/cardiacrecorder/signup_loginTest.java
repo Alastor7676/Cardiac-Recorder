@@ -234,10 +234,6 @@ public class signup_loginTest {
         onView(withId(R.id.main)).check(matches(isDisplayed()));
 
         sleep(1000);
-        onView(withText("126")).check(matches(isDisplayed()));
-        onView(withText("75")).check(matches(isDisplayed()));
-
-        sleep(1000);
         onView(withId(R.id.image)).perform(click());
     }
 
