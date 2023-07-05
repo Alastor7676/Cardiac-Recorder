@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,6 +51,10 @@ public class signup extends AppCompatActivity {
                 else if (!passtxt.equals(conpasstxt))
                 {
                     Toast.makeText(signup.this,"Passwords are not matching",Toast.LENGTH_SHORT).show();
+                }
+                else if(!Patterns.EMAIL_ADDRESS.matcher(emailtxt).matches())
+                {
+                    Toast.makeText(signup.this,"Email is not valid",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
