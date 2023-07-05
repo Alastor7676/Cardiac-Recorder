@@ -52,10 +52,6 @@ public class signup extends AppCompatActivity {
                 {
                     Toast.makeText(signup.this,"Passwords are not matching",Toast.LENGTH_SHORT).show();
                 }
-                else if(!Patterns.EMAIL_ADDRESS.matcher(emailtxt).matches())
-                {
-                    Toast.makeText(signup.this,"Email is not valid",Toast.LENGTH_SHORT).show();
-                }
                 else
                 {
                     databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener(){
