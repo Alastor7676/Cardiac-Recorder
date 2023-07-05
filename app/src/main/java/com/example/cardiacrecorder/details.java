@@ -44,9 +44,42 @@ public class details extends AppCompatActivity {
 
                 date.setText(datevalue);
                 time.setText(timevalue);
-                systolic.setText(sysvalue);
-                diastolic.setText(disvalue);
-                heart.setText(bpmvalue);
+                int sys=Integer.parseInt(sysvalue.replaceAll("[\\D]", ""));
+                if(sys>120){
+                    sysvalue+="  (High systolic blood pressure)";
+                    systolic.setText(sysvalue);
+                } else if (sys<90) {
+                    sysvalue+="  (Low systolic blood pressure)";
+                    systolic.setText(sysvalue);
+                }
+                else{
+                    sysvalue+="  (Normal systolic blood pressure)";
+                    systolic.setText(sysvalue);
+                }
+                int dis=Integer.parseInt(disvalue.replaceAll("[\\D]", ""));
+                if(dis>80){
+                    disvalue+=" (High diastolic blood pressure)";
+                    diastolic.setText(disvalue);
+                } else if (dis<60) {
+                    disvalue+=" (Low diastolic blood pressure)";
+                    diastolic.setText(disvalue);
+                }
+                else{
+                    disvalue+=" (Normal diastolic blood pressure)";
+                    diastolic.setText(disvalue);
+                }
+                int hrt=Integer.parseInt(bpmvalue.replaceAll("[\\D]", ""));
+                if(hrt>100){
+                    bpmvalue+=" (High heart rate)";
+                    heart.setText(bpmvalue);
+                } else if (hrt<60) {
+                    bpmvalue+=" (Low heart rate)";
+                    heart.setText(bpmvalue);
+                }
+                else {
+                    bpmvalue+=" (Normal heart rate)";
+                    heart.setText(bpmvalue);
+                }
                 comment.setText(cmntvalue);
 
             }
