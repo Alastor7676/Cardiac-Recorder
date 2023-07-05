@@ -112,24 +112,3 @@ public class ExampleUnitTest {
             }
         });
     }
-//
-//    @Test
-//    public void test_delete_data(){
-//        String id="50000";
-//        String user="ab";
-//        MyAdapter myAdapter=new MyAdapter();
-//        myAdapter.delete_data(user,id);
-//
-//        databaseReference.child("data").addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                DataSnapshot contentSnapshot = snapshot.child(user);
-//                assertTrue(!contentSnapshot.hasChild(id));
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
-}
