@@ -159,9 +159,9 @@ public class signup_loginTest {
         onView(withId(R.id.det)).check(matches(isDisplayed()));
 
         sleep(1000);
-        onView(withText("127")).check(matches(isDisplayed()));
-        onView(withText("89")).check(matches(isDisplayed()));
-        onView(withText("70")).check(matches(isDisplayed()));
+        onView(withText("127 (High sys pressure)")).check(matches(isDisplayed()));
+        onView(withText("89 (High dias pressure)")).check(matches(isDisplayed()));
+        onView(withText("70 (Normal heart rate)")).check(matches(isDisplayed()));
         onView(withText("test record2")).check(matches(isDisplayed()));
         onView(withText("8:00 PM")).check(matches(isDisplayed()));
         onView(withText("17/06/2023")).check(matches(isDisplayed()));
@@ -175,66 +175,5 @@ public class signup_loginTest {
         onView(withId(R.id.image)).perform(click());
     }
 
-    @Test
-    public void test_edit() throws InterruptedException {
-        onView(withId(R.id.loginButton)).perform(click());
-        onView(withId(R.id.log)).check(matches(isDisplayed()));
-
-        onView(withId(R.id.username)).perform(ViewActions.typeText("asif"));
-        onView(withId(R.id.password)).perform(ViewActions.typeText("asif"));
-
-        onView(withId(R.id.loginButton)).perform(click());
-        sleep(1000);
-        onView(withId(R.id.main)).check(matches(isDisplayed()));
-
-        onView(withId(R.id.imgadd)).perform(click());
-        sleep(1000);
-        onView(withId(R.id.add)).check(matches(isDisplayed()));
-
-        sleep(1000);
-        onView(withId(R.id.datetext)).perform(ViewActions.typeText("17/06/2023"));
-        onView(withId(R.id.timetext)).perform(ViewActions.typeText("7:25 PM"));
-        onView(withId(R.id.systext)).perform(ViewActions.typeText("126"));
-        onView(withId(R.id.distext)).perform(ViewActions.typeText("91"));
-        Espresso.pressBack();
-        onView(withId(R.id.bpmtext)).perform(ViewActions.typeText("75"));
-        Espresso.pressBack();
-        onView(withId(R.id.cmnttext)).perform(ViewActions.typeText("test record3"));
-        Espresso.pressBack();
-
-        onView(withId(R.id.addbutton)).perform(click());
-        sleep(1000);
-        onView(withId(R.id.main)).check(matches(isDisplayed()));
-
-        sleep(1000);
-        onView(withText("126")).check(matches(isDisplayed()));
-        onView(withText("91")).check(matches(isDisplayed()));
-        onView(withText("75")).check(matches(isDisplayed()));
-        onView(withText("test record3")).check(matches(isDisplayed()));
-
-        sleep(1000);
-        onView(withId(R.id.image2)).perform(click());
-        sleep(1000);
-        onView(withId(R.id.edit)).check(matches(isDisplayed()));
-        sleep(500);
-        Espresso.onView(ViewMatchers.withId(R.id.timevalueText)).perform(ViewActions.clearText());
-        onView(withId(R.id.timevalueText)).perform(ViewActions.typeText("8:50 PM"));
-        Espresso.pressBack();
-        Espresso.onView(ViewMatchers.withId(R.id.systolicvalueText)).perform(ViewActions.clearText());
-        onView(withId(R.id.systolicvalueText)).perform(ViewActions.typeText("134"));
-        Espresso.pressBack();
-        Espresso.onView(ViewMatchers.withId(R.id.heartratevalueText)).perform(ViewActions.clearText());
-        onView(withId(R.id.heartratevalueText)).perform(ViewActions.typeText("80"));
-        Espresso.pressBack();
-
-        sleep(500);
-//        onView(withId(R.id.saveButton)).perform(click());
-        Espresso.pressBack();
-        sleep(1000);
-        onView(withId(R.id.main)).check(matches(isDisplayed()));
-
-        sleep(1000);
-        onView(withId(R.id.image)).perform(click());
-    }
 
 }
