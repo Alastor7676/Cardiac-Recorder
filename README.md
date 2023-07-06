@@ -27,7 +27,7 @@ In an era where individuals are increasingly prioritizing their health and well-
   </tr>
   <tr> 
     <td><img src = "https://github.com/Alastor7676/Cardiac-Recorder/assets/52665240/4cd7fbca-b15e-42cb-8571-f1cc7805376c" height = "500px" width="250px"/></td>
-    <td><img src = "https://github.com/Alastor7676/Cardiac-Recorder/assets/52665240/c1400906-9e58-4445-958c-4d00eea223d7" height = "500px" width="250px"/></td>
+    <td><img src = "https://github.com/Alastor7676/Cardiac-Recorder/assets/126903579/1ca83a9b-605f-447e-9369-3640ba207ea5" height = "500px" width="250px"/></td>
     <td><img src = "https://github.com/Alastor7676/Cardiac-Recorder/assets/52665240/38d06512-efed-4c19-b307-b11e422d38a0" height = "500px" width="250px"/></td>
   </tr>
 
